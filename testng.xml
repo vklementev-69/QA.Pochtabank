@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="E:/Projects/Autotest/Maven/QA.Pochtabank">
+    <test verbose="2" name="E:/Projects/Autotest/Maven/QA.Pochtabank">
         <classes>
-            <class name="quantumart.pochtabank.FeedbackTest">
+            <class name="pochtabank.FeedbackTest">
                 <methods>
                     <include name="testNoSms"/>
                 </methods>

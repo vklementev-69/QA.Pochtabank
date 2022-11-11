@@ -1,4 +1,4 @@
-package quantumart.pochtabank;
+package pochtabank;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -14,9 +14,6 @@ import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import static java.lang.System.in;
 
 public class FeedbackTest {
 
@@ -28,18 +25,6 @@ public class FeedbackTest {
     WebDriverWait wait;
 
     int testIndex;
-
-    @BeforeTest
-    private void setupTest() {
-        System.setProperty("webdriver.chrome.driver", "E:\\Projects\\Autotest\\ChromeDriver\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless");
-        //options.addArguments("start-maximized");
-        chrome = new ChromeDriver(options);
-        chrome.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        wait = new WebDriverWait(chrome, Duration.ofSeconds(10));
-        testIndex = 0;
-    }
 
     @DataProvider(name = "sms")
     public static Object[][] dbData() {
@@ -55,12 +40,29 @@ public class FeedbackTest {
         };
     }
 
+    @BeforeTest
+    private void setupTest() {
+        System.setProperty("webdriver.chrome.driver", "E:\\Projects\\Autotest\\ChromeDriver\\chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        //options.addArguments("--headless");
+        //options.addArguments("start-maximized");
+        chrome = new ChromeDriver(options);
+        chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(chrome, Duration.ofSeconds(10));
+        testIndex = 0;
+    }
 
     @Parameters({"sms"})
     @Test(dataProvider = "sms")
     public void testNoSms(String fio, String phone, String mail, String comment, Boolean checkAgreement) {
         testIndex++;
         System.out.println("Test " + testIndex);
+
+//        try {
+//            Alert alert = wait.until(alertIsPresent());
+//            alert.dismiss();
+//        }catch (TimeoutException tex){}
+
         Actions act = new Actions(chrome);
         if (fio != null && fio.length() > 0)
             elFio.sendKeys(fio);
@@ -87,6 +89,7 @@ public class FeedbackTest {
         try {
             Thread.sleep(100);
             wait.until(ExpectedConditions.elementToBeClickable(submitBtn)).click();
+            act.moveToElement(submitBtn).click().build().perform();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
