@@ -61,11 +61,13 @@ public class FeedbackTest {
         System.out.println("Test " + (testIndex + 1));
 
         Actions act = new Actions(chrome);
-        if (fio != null && fio.length() > 0)
+        if (fio != null && fio.length() > 0) {
+            wait.until(ExpectedConditions.invisibilityOf(elFio));
             elFio.sendKeys(fio);
+        }
         if (phone != null && phone.length() > 0)
             try {
-                //act.moveToElement(elPhone).click().build().perform();
+                wait.until(ExpectedConditions.invisibilityOf(elPhone));
                 wait.until(ExpectedConditions.elementToBeClickable(elPhone));
                 act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
@@ -78,17 +80,23 @@ public class FeedbackTest {
             } catch (ElementClickInterceptedException ie) {
                 System.out.println(ie.getLocalizedMessage());
             }
-        if (mail != null && mail.length() > 0)
+        if (mail != null && mail.length() > 0) {
+            wait.until(ExpectedConditions.invisibilityOf(elMail));
             elMail.sendKeys(mail);
-        if (comment != null && comment.length() > 0)
+        }
+        if (comment != null && comment.length() > 0) {
+            wait.until(ExpectedConditions.invisibilityOf(elComment));
             elComment.sendKeys(comment);
+        }
         try {
             if (checkAgreement) {
                 Thread.sleep(100);
+                wait.until(ExpectedConditions.invisibilityOf(elAgreement));
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
                 act.moveToElement(elAgreement).click().build().perform();
             }
             Thread.sleep(100);
+            wait.until(ExpectedConditions.invisibilityOf(submitBtn));
             wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
             act.moveToElement(submitBtn).click().build().perform();
         } catch (InterruptedException e) {
