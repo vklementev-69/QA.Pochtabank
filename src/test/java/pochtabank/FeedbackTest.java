@@ -56,7 +56,7 @@ public class FeedbackTest {
     @Parameters({"sms"})
     @Test(dataProvider = "sms")
     @Description(value = "Проверка работы \"Формы обратной связи\". {condition}")
-    public void testNoSms(String fio, String phone, String mail, String comment, Boolean checkAgreement) {
+    public void testNoSms(String fio, String phone, String mail, String comment, Boolean checkAgreement, String condition) {
 
         System.out.println("Test " + (testIndex + 1));
 
