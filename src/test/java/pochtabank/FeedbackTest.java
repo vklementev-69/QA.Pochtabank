@@ -46,6 +46,7 @@ public class FeedbackTest {
         System.setProperty("webdriver.chrome.whitelistedIps", "");
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("--headless");
+        options.addArguments("--remote-debugging-port=22785");
         options.addArguments("start-maximized");
         options.addArguments("--disable-notifications");
         chrome = new ChromeDriver(options);
