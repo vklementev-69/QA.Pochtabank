@@ -43,6 +43,7 @@ public class FeedbackTest {
     @BeforeTest
     private void setupTest() {
         System.setProperty("webdriver.chrome.driver", "E:\\Projects\\Autotest\\ChromeDriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.whitelistedIps", "");
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("--headless");
         options.addArguments("start-maximized");
