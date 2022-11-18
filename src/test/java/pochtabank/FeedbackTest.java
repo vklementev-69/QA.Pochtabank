@@ -48,7 +48,7 @@ public class FeedbackTest {
         options.addArguments("--disable-notifications");
         chrome = new ChromeDriver(options);
         chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(chrome, Duration.ofSeconds(5));
+        wait = new WebDriverWait(chrome, Duration.ofSeconds(15));
         testIndex = 0;
         System.out.println("setupTest");
     }
@@ -61,7 +61,7 @@ public class FeedbackTest {
         System.out.println("Test " + (testIndex + 1) + " - " + condition);
 
         Actions act = new Actions(chrome);
-        if (phone != null && phone.length() > 0)
+        if (phone != null && phone.length() > 0) {
             try {
                 wait.until(ExpectedConditions.visibilityOf(elPhone));
 //                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
@@ -81,6 +81,7 @@ public class FeedbackTest {
             } catch (ElementClickInterceptedException ie) {
                 System.out.println(ie.getLocalizedMessage());
             }
+        }
         if (mail != null && mail.length() > 0) {
             System.out.println("Start fill email");
             wait.until(ExpectedConditions.visibilityOf(elMail));
