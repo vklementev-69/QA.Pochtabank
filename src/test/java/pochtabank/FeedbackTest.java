@@ -53,6 +53,7 @@ public class FeedbackTest {
         chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(chrome, Duration.ofSeconds(10));
         testIndex = 0;
+        System.out.println("setupTest");
     }
 
     @Parameters({"sms"})
@@ -66,6 +67,7 @@ public class FeedbackTest {
         if (fio != null && fio.length() > 0) {
             wait.until(ExpectedConditions.invisibilityOf(elFio));
             elFio.sendKeys(fio);
+            System.out.println("fill fio");
         }
         if (phone != null && phone.length() > 0)
             try {
@@ -77,6 +79,7 @@ public class FeedbackTest {
                     Thread.sleep(50);
                     elPhone.sendKeys(Character.toString(num));
                 }
+                System.out.println("fill phone");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             } catch (ElementClickInterceptedException ie) {
@@ -85,10 +88,12 @@ public class FeedbackTest {
         if (mail != null && mail.length() > 0) {
             wait.until(ExpectedConditions.invisibilityOf(elMail));
             elMail.sendKeys(mail);
+            System.out.println("fill email");
         }
         if (comment != null && comment.length() > 0) {
             wait.until(ExpectedConditions.invisibilityOf(elComment));
             elComment.sendKeys(comment);
+            System.out.println("fill comment");
         }
         try {
             if (checkAgreement) {
@@ -96,11 +101,13 @@ public class FeedbackTest {
                 wait.until(ExpectedConditions.invisibilityOf(elAgreement));
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
                 act.moveToElement(elAgreement).click().build().perform();
+                System.out.println("check agreement");
             }
             Thread.sleep(100);
             wait.until(ExpectedConditions.invisibilityOf(submitBtn));
             wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
             act.moveToElement(submitBtn).click().build().perform();
+            System.out.println("click submit");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } catch (ElementClickInterceptedException ie) {
@@ -124,6 +131,7 @@ public class FeedbackTest {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("beforeMethod");
     }
 
     @AfterMethod
@@ -143,6 +151,7 @@ public class FeedbackTest {
             System.out.println("Test fail");
         }
         testIndex++;
+        System.out.println("afterMethod");
     }
 
     private void checkErrors(List<WebElement> errors) {
@@ -167,5 +176,6 @@ public class FeedbackTest {
     private void closeDriver() {
         if (chrome != null)
             chrome.quit();
+        System.out.println("afterTest");
     }
 }
