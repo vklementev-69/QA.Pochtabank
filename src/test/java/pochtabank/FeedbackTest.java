@@ -107,7 +107,7 @@ public class FeedbackTest {
             System.out.println("Email - " + elMail.getAttribute("value"));
         }
         if (comment != null && comment.length() > 0) {
-            wait.until(ExpectedConditions.visibilityOf(elComment));
+//            wait.until(ExpectedConditions.visibilityOf(elComment));
             elComment.sendKeys(comment);
 //            String script = String.format("$('input[name=\"message\"]').click().val('%s')", comment);
 //            System.out.println(script);
@@ -118,7 +118,7 @@ public class FeedbackTest {
         try {
             if (checkAgreement) {
                 Thread.sleep(100);
-                wait.until(ExpectedConditions.visibilityOf(elAgreement));
+//                wait.until(ExpectedConditions.visibilityOf(elAgreement));
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
                 act.moveToElement(elAgreement).click().build().perform();
 //                String script = "$('span.style_checkmark___GZe2').click()";
@@ -128,7 +128,7 @@ public class FeedbackTest {
                 System.out.println("check agreement - "  + elAgreement.isSelected());
             }
             Thread.sleep(100);
-            wait.until(ExpectedConditions.visibilityOf(submitBtn));
+//            wait.until(ExpectedConditions.visibilityOf(submitBtn));
             wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
             act.moveToElement(submitBtn).click().build().perform();
 //            String script = "$('form.style_form__8TDpF button[type=\"submit\"]').click()";
