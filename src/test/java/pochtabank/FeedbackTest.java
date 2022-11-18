@@ -89,17 +89,18 @@ public class FeedbackTest {
 //            String script = String.format("$('input[name=\"email\"]').click().val('%s')", mail);
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
+            elMail = chrome.findElement(By.name("email"));
             System.out.println("Email - " + elMail.getAttribute("value"));
         }
         if (fio != null && fio.length() > 0) {
             wait.until(ExpectedConditions.visibilityOf(elFio));
-            elFio.sendKeys(fio);
+            act.moveToElement(elFio).sendKeys(fio).build().perform();
 //            String script = String.format("$('input[name=\"fio\"]').val('%s').change()", fio);
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
             // elFio = chrome.findElement(By.name("fio"));
+            elPhone = chrome.findElement(By.name("phone"));
             System.out.println("FIO - " + elFio.getAttribute("value"));
-//            System.out.println("fill fio");
         }
         if (comment != null && comment.length() > 0) {
             wait.until(ExpectedConditions.visibilityOf(elComment));
@@ -107,7 +108,8 @@ public class FeedbackTest {
 //            String script = String.format("$('input[name=\"message\"]').click().val('%s')", comment);
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
-            System.out.println("fill comment");
+            elMail = chrome.findElement(By.name("message"));
+            System.out.println("Comment - " + elComment.getAttribute("value"));
         }
         try {
             if (checkAgreement) {
@@ -118,7 +120,8 @@ public class FeedbackTest {
 //                String script = "$('span.style_checkmark___GZe2').click()";
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
-                System.out.println("check agreement");
+                elAgreement = chrome.findElement(By.cssSelector("span.style_checkmark___GZe2"));
+                System.out.println("check agreement - "  + elAgreement.isSelected());
             }
             Thread.sleep(100);
             wait.until(ExpectedConditions.visibilityOf(submitBtn));
