@@ -61,16 +61,6 @@ public class FeedbackTest {
         System.out.println("Test " + (testIndex + 1) + " - " + condition);
 
         Actions act = new Actions(chrome);
-        if (fio != null && fio.length() > 0) {
-            wait.until(ExpectedConditions.visibilityOf(elFio));
-            elFio.sendKeys(fio);
-//            String script = String.format("$('input[name=\"fio\"]').val('%s').change()", fio);
-//            System.out.println(script);
-//            ((JavascriptExecutor) chrome).executeScript(script);
-           // elFio = chrome.findElement(By.name("fio"));
-            System.out.println("FIO - " + elFio.getAttribute("value"));
-//            System.out.println("fill fio");
-        }
         if (phone != null && phone.length() > 0)
             try {
                 wait.until(ExpectedConditions.visibilityOf(elPhone));
@@ -100,6 +90,16 @@ public class FeedbackTest {
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("Email - " + elMail.getAttribute("value"));
+        }
+        if (fio != null && fio.length() > 0) {
+            wait.until(ExpectedConditions.visibilityOf(elFio));
+            elFio.sendKeys(fio);
+//            String script = String.format("$('input[name=\"fio\"]').val('%s').change()", fio);
+//            System.out.println(script);
+//            ((JavascriptExecutor) chrome).executeScript(script);
+            // elFio = chrome.findElement(By.name("fio"));
+            System.out.println("FIO - " + elFio.getAttribute("value"));
+//            System.out.println("fill fio");
         }
         if (comment != null && comment.length() > 0) {
             wait.until(ExpectedConditions.visibilityOf(elComment));
