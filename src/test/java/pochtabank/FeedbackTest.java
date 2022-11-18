@@ -75,9 +75,10 @@ public class FeedbackTest {
         if (phone != null && phone.length() > 0) {
             try {
 //                wait.until(ExpectedConditions.visibilityOf(elPhone));
-//                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
+                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
                 act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
+                act.moveToElement(elMail).sendKeys(phone).build().perform();
                 elPhone.sendKeys(phone);
 
 //                for (char num : phone.toCharArray()) {
