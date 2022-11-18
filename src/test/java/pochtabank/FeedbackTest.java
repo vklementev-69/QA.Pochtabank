@@ -84,19 +84,21 @@ public class FeedbackTest {
 //                String script = String.format("$('input[name=\"phone\"]').focus().val('%s').blur()", phone);
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
-                System.out.println("fill phone");
+                System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             } catch (ElementClickInterceptedException ie) {
                 System.out.println(ie.getLocalizedMessage());
             }
         if (mail != null && mail.length() > 0) {
+            System.out.println("Start fill email");
             wait.until(ExpectedConditions.visibilityOf(elMail));
+            wait.until(ExpectedConditions.elementToBeClickable(elMail));
             elMail.sendKeys(mail);
 //            String script = String.format("$('input[name=\"email\"]').click().val('%s')", mail);
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
-            System.out.println("fill email");
+            System.out.println("Email - " + elMail.getAttribute("value"));
         }
         if (comment != null && comment.length() > 0) {
             wait.until(ExpectedConditions.visibilityOf(elComment));
