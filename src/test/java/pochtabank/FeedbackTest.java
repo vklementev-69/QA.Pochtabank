@@ -64,9 +64,11 @@ public class FeedbackTest {
         if (phone != null && phone.length() > 0) {
             try {
                 wait.until(ExpectedConditions.visibilityOf(elPhone));
-//                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
-                act.moveToElement(elPhone).sendKeys(phone).build().perform();
+                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
+                act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
+                elPhone.sendKeys(phone);
+
 //                for (char num : phone.toCharArray()) {
 //                    Thread.sleep(50);
 //                    elPhone.sendKeys(Character.toString(num));
@@ -86,6 +88,7 @@ public class FeedbackTest {
             wait.until(ExpectedConditions.visibilityOf(elMail));
 //            wait.until(ExpectedConditions.elementToBeClickable(elMail));
             act.moveToElement(elMail).sendKeys(mail).build().perform();
+            elMail.sendKeys(mail);
 //            String script = String.format("$('input[name=\"email\"]').click().val('%s')", mail);
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
@@ -95,6 +98,7 @@ public class FeedbackTest {
         if (fio != null && fio.length() > 0) {
             wait.until(ExpectedConditions.visibilityOf(elFio));
             act.moveToElement(elFio).sendKeys(fio).build().perform();
+            elFio.sendKeys(fio);
 //            String script = String.format("$('input[name=\"fio\"]').val('%s').change()", fio);
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
