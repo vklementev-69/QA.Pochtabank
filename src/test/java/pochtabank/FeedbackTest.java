@@ -2,10 +2,7 @@ package pochtabank;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -51,7 +48,7 @@ public class FeedbackTest {
         options.addArguments("--disable-notifications");
         chrome = new ChromeDriver(options);
         chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(chrome, Duration.ofSeconds(30));
+        wait = new WebDriverWait(chrome, Duration.ofSeconds(5));
         testIndex = 0;
         System.out.println("setupTest");
     }
@@ -61,12 +58,13 @@ public class FeedbackTest {
     @Description(value = "Проверка работы \"Формы обратной связи\". {condition}")
     public void testNoSms(String fio, String phone, String mail, String comment, Boolean checkAgreement, String condition) {
 
-        System.out.println("Test " + (testIndex + 1));
+        System.out.println("Test " + (testIndex + 1) + " - " + condition);
 
         Actions act = new Actions(chrome);
         if (fio != null && fio.length() > 0) {
-            wait.until(ExpectedConditions.invisibilityOf(elFio));
-            elFio.sendKeys(fio);
+//            wait.until(ExpectedConditions.invisibilityOf(elFio));
+//            elFio.sendKeys(fio);
+            ((JavascriptExecutor) chrome).executeScript("$('input[name=\"fio\"]').val({0})", fio);
             System.out.println("fill fio");
         }
         if (phone != null && phone.length() > 0)
