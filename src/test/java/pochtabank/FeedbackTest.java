@@ -61,10 +61,21 @@ public class FeedbackTest {
         System.out.println("Test " + (testIndex + 1) + " - " + condition);
 
         Actions act = new Actions(chrome);
+        if (fio != null && fio.length() > 0) {
+            wait.until(ExpectedConditions.visibilityOf(elFio));
+            act.moveToElement(elFio).sendKeys(fio).build().perform();
+            elFio.sendKeys(fio);
+//            String script = String.format("$('input[name=\"fio\"]').val('%s').change()", fio);
+//            System.out.println(script);
+//            ((JavascriptExecutor) chrome).executeScript(script);
+            // elFio = chrome.findElement(By.name("fio"));
+            elPhone = chrome.findElement(By.name("phone"));
+            System.out.println("FIO - " + elFio.getAttribute("value"));
+        }
         if (phone != null && phone.length() > 0) {
             try {
-                wait.until(ExpectedConditions.visibilityOf(elPhone));
-                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
+//                wait.until(ExpectedConditions.visibilityOf(elPhone));
+//                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
                 act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
                 elPhone.sendKeys(phone);
@@ -85,7 +96,7 @@ public class FeedbackTest {
         }
         if (mail != null && mail.length() > 0) {
             System.out.println("Start fill email");
-            wait.until(ExpectedConditions.visibilityOf(elMail));
+//            wait.until(ExpectedConditions.visibilityOf(elMail));
 //            wait.until(ExpectedConditions.elementToBeClickable(elMail));
             act.moveToElement(elMail).sendKeys(mail).build().perform();
             elMail.sendKeys(mail);
@@ -94,17 +105,6 @@ public class FeedbackTest {
 //            ((JavascriptExecutor) chrome).executeScript(script);
             elMail = chrome.findElement(By.name("email"));
             System.out.println("Email - " + elMail.getAttribute("value"));
-        }
-        if (fio != null && fio.length() > 0) {
-            wait.until(ExpectedConditions.visibilityOf(elFio));
-            act.moveToElement(elFio).sendKeys(fio).build().perform();
-            elFio.sendKeys(fio);
-//            String script = String.format("$('input[name=\"fio\"]').val('%s').change()", fio);
-//            System.out.println(script);
-//            ((JavascriptExecutor) chrome).executeScript(script);
-            // elFio = chrome.findElement(By.name("fio"));
-            elPhone = chrome.findElement(By.name("phone"));
-            System.out.println("FIO - " + elFio.getAttribute("value"));
         }
         if (comment != null && comment.length() > 0) {
             wait.until(ExpectedConditions.visibilityOf(elComment));
