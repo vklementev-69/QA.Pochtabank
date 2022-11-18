@@ -64,7 +64,9 @@ public class FeedbackTest {
         if (fio != null && fio.length() > 0) {
 //            wait.until(ExpectedConditions.invisibilityOf(elFio));
 //            elFio.sendKeys(fio);
-            ((JavascriptExecutor) chrome).executeScript("$('input[name=\"fio\"]').val({0})", fio);
+            String script = String.format("$('input[name=\"fio\"]').val(%s)", fio);
+            System.out.println(script);
+            ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("fill fio");
         }
         if (phone != null && phone.length() > 0)
