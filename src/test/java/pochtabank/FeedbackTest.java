@@ -66,7 +66,8 @@ public class FeedbackTest {
             String script = String.format("$('input[name=\"fio\"]').val('%s')", fio);
             System.out.println(script);
             ((JavascriptExecutor) chrome).executeScript(script);
-            System.out.println("fill fio");
+            System.out.println("FIO - " + elFio.getText());
+//            System.out.println("fill fio");
         }
         if (phone != null && phone.length() > 0)
             try {
