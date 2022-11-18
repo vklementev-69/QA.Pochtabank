@@ -153,7 +153,7 @@ public class FeedbackTest {
     private void checkResult() {
         try {
             Thread.sleep(100);
-            List<WebElement> errors = chrome.findElements(By.cssSelector("div:visible[class^='style_error_']"));
+            List<WebElement> errors = chrome.findElements(By.cssSelector("div[class^='style_error_']"));
             if (errors.size() == 0) {
                 wait.until(ExpectedConditions.jsReturnsValue("return document.querySelector('div.style_modalWrapper__UG622')"));
                 Assert.assertTrue(testIndex < 3, dbData()[testIndex][5].toString());
