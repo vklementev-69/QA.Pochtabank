@@ -5,7 +5,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -110,7 +109,7 @@ public class FeedbackTest {
 //                wait.until(ExpectedConditions.invisibilityOf(elAgreement));
 //                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
 //                act.moveToElement(elAgreement).click().build().perform();
-                String script = String.format("$('span.style_checkmark___GZe2').click()");
+                String script = "$('span.style_checkmark___GZe2').click()";
                 System.out.println(script);
                 ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("check agreement");
@@ -119,7 +118,7 @@ public class FeedbackTest {
 //            wait.until(ExpectedConditions.invisibilityOf(submitBtn));
 //            wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
 //            act.moveToElement(submitBtn).click().build().perform();
-            String script = String.format("$('form.style_form__8TDpF button[type='submit']').click()");
+            String script = "$('form.style_form__8TDpF button[type=\"submit\"]').click()";
             System.out.println(script);
             ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("click submit");
