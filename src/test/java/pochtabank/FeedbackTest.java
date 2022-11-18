@@ -169,6 +169,8 @@ public class FeedbackTest {
     }
 
     private void checkErrors(List<WebElement> errors) {
+        System.out.println("checkErrors - case " + testIndex);
+        System.out.println("Errors list size - " + errors.size());
         switch (testIndex) {
             case 3:
                 Assert.assertEquals(errors.size(), 3, dbData()[testIndex][5].toString());
