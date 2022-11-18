@@ -60,7 +60,7 @@ public class FeedbackTest {
 
         System.out.println("Test " + (testIndex + 1) + " - " + condition);
 
-        Actions act = new Actions(chrome);
+//        Actions act = new Actions(chrome);
         if (fio != null && fio.length() > 0) {
 //            wait.until(ExpectedConditions.invisibilityOf(elFio));
 //            elFio.sendKeys(fio);
@@ -71,42 +71,57 @@ public class FeedbackTest {
         }
         if (phone != null && phone.length() > 0)
             try {
-                wait.until(ExpectedConditions.invisibilityOf(elPhone));
-                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
-                act.moveToElement(elPhone).click().build().perform();
-                Thread.sleep(100);
-                for (char num : phone.toCharArray()) {
-                    Thread.sleep(50);
-                    elPhone.sendKeys(Character.toString(num));
-                }
+//                wait.until(ExpectedConditions.invisibilityOf(elPhone));
+//                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
+//                act.moveToElement(elPhone).click().build().perform();
+//                Thread.sleep(100);
+//                for (char num : phone.toCharArray()) {
+//                    Thread.sleep(50);
+//                    elPhone.sendKeys(Character.toString(num));
+//                }
+                String script = String.format("$('input[name=\"phone\"]').val('%s')", phone);
+                System.out.println(script);
+                ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("fill phone");
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
             } catch (ElementClickInterceptedException ie) {
                 System.out.println(ie.getLocalizedMessage());
             }
         if (mail != null && mail.length() > 0) {
-            wait.until(ExpectedConditions.invisibilityOf(elMail));
-            elMail.sendKeys(mail);
+//            wait.until(ExpectedConditions.invisibilityOf(elMail));
+//            elMail.sendKeys(mail);
+            String script = String.format("$('input[name=\"mail\"]').val('%s')", mail);
+            System.out.println(script);
+            ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("fill email");
         }
         if (comment != null && comment.length() > 0) {
-            wait.until(ExpectedConditions.invisibilityOf(elComment));
-            elComment.sendKeys(comment);
+//            wait.until(ExpectedConditions.invisibilityOf(elComment));
+//            elComment.sendKeys(comment);
+            String script = String.format("$('input[name=\"comment\"]').val('%s')", comment);
+            System.out.println(script);
+            ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("fill comment");
         }
         try {
             if (checkAgreement) {
-                Thread.sleep(100);
-                wait.until(ExpectedConditions.invisibilityOf(elAgreement));
-                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
-                act.moveToElement(elAgreement).click().build().perform();
+//                Thread.sleep(100);
+//                wait.until(ExpectedConditions.invisibilityOf(elAgreement));
+//                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
+//                act.moveToElement(elAgreement).click().build().perform();
+                String script = String.format("$('span.style_checkmark___GZe2').click()");
+                System.out.println(script);
+                ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("check agreement");
             }
             Thread.sleep(100);
-            wait.until(ExpectedConditions.invisibilityOf(submitBtn));
-            wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
-            act.moveToElement(submitBtn).click().build().perform();
+//            wait.until(ExpectedConditions.invisibilityOf(submitBtn));
+//            wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
+//            act.moveToElement(submitBtn).click().build().perform();
+            String script = String.format("$('form.style_form__8TDpF button[type='submit']').click()");
+            System.out.println(script);
+            ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("click submit");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
