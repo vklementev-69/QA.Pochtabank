@@ -65,9 +65,8 @@ public class FeedbackTest {
             try {
                 wait.until(ExpectedConditions.visibilityOf(elPhone));
 //                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
-                act.moveToElement(elPhone).click().build().perform();
+                act.moveToElement(elPhone).sendKeys(phone).build().perform();
                 Thread.sleep(100);
-                elPhone.sendKeys(phone);
 //                for (char num : phone.toCharArray()) {
 //                    Thread.sleep(50);
 //                    elPhone.sendKeys(Character.toString(num));
@@ -86,7 +85,7 @@ public class FeedbackTest {
             System.out.println("Start fill email");
             wait.until(ExpectedConditions.visibilityOf(elMail));
 //            wait.until(ExpectedConditions.elementToBeClickable(elMail));
-            elMail.sendKeys(mail);
+            act.moveToElement(elMail).sendKeys(mail).build().perform();
 //            String script = String.format("$('input[name=\"email\"]').click().val('%s')", mail);
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
