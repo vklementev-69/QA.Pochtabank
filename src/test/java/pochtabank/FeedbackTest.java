@@ -51,7 +51,7 @@ public class FeedbackTest {
         options.addArguments("--disable-notifications");
         chrome = new ChromeDriver(options);
         chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(chrome, Duration.ofSeconds(10));
+        wait = new WebDriverWait(chrome, Duration.ofSeconds(30));
         testIndex = 0;
         System.out.println("setupTest");
     }
