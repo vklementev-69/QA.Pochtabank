@@ -74,8 +74,8 @@ public class FeedbackTest {
                 act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
                 elPhone.clear();
-                act.moveToElement(elMail).sendKeys(phone).build().perform();
-                //elPhone.sendKeys(phone);
+                //act.moveToElement(elMail).sendKeys(phone).build().perform();
+                elPhone.sendKeys(phone);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -100,7 +100,7 @@ public class FeedbackTest {
             if (checkAgreement) {
                 Thread.sleep(100);
                 wait.until(ExpectedConditions.elementToBeClickable(elAccept));
-                act.moveToElement(elAgreement).click().build().perform();
+                act.moveToElement(elAccept).click().build().perform();
  //               elAgreement.click();
 //                String script = "$('span.style_checkmark___GZe2').click()";
 //                System.out.println(script);
@@ -133,7 +133,7 @@ public class FeedbackTest {
             elPhone = chrome.findElement(By.xpath("//input[@name='phone']")); //(By.name("phone"));
             elMail = chrome.findElement(By.name("email"));
             elAgreement = chrome.findElement(By.cssSelector("span.style_checkmark___GZe2"));//(By.name("accept"));
-            elAccept = chrome.findElement(By.cssSelector("input[name='accept']"));//(By.name("accept"));
+            elAccept = chrome.findElement(By.name("accept"));
             elComment = chrome.findElement(By.name("message"));
             submitBtn = chrome.findElement(By.cssSelector("form.style_form__8TDpF button[type='submit']"));
         } catch (InterruptedException e) {
