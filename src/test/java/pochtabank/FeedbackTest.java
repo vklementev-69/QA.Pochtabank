@@ -65,11 +65,6 @@ public class FeedbackTest {
             wait.until(ExpectedConditions.visibilityOf(elFio));
             act.moveToElement(elFio).sendKeys(fio).build().perform();
             elFio.sendKeys(fio);
-//            String script = String.format("$('input[name=\"fio\"]').val('%s').change()", fio);
-//            System.out.println(script);
-//            ((JavascriptExecutor) chrome).executeScript(script);
-            // elFio = chrome.findElement(By.name("fio"));
-            elPhone = chrome.findElement(By.name("phone"));
             System.out.println("FIO - " + elFio.getAttribute("value"));
         }
         if (phone != null && phone.length() > 0) {
@@ -81,14 +76,6 @@ public class FeedbackTest {
                 elPhone.clear();
                 act.moveToElement(elMail).sendKeys(phone).build().perform();
                 elPhone.sendKeys(phone);
-
-//                for (char num : phone.toCharArray()) {
-//                    Thread.sleep(50);
-//                    elPhone.sendKeys(Character.toString(num));
-//                }
-//                String script = String.format("$('input[name=\"phone\"]').focus().val('%s').blur()", phone);
-//                System.out.println(script);
-//                ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -97,19 +84,14 @@ public class FeedbackTest {
             }
         }
         if (mail != null && mail.length() > 0) {
-            System.out.println("Start fill email");
-//            wait.until(ExpectedConditions.visibilityOf(elMail));
-//            wait.until(ExpectedConditions.elementToBeClickable(elMail));
             act.moveToElement(elMail).sendKeys(mail).build().perform();
             elMail.sendKeys(mail);
-//            String script = String.format("$('input[name=\"email\"]').click().val('%s')", mail);
-//            System.out.println(script);
-//            ((JavascriptExecutor) chrome).executeScript(script);
             elMail = chrome.findElement(By.name("email"));
             System.out.println("Email - " + elMail.getAttribute("value"));
         }
         if (comment != null && comment.length() > 0) {
-//            wait.until(ExpectedConditions.visibilityOf(elComment));
+            wait.until(ExpectedConditions.visibilityOf(elComment));
+            act.moveToElement(elComment).sendKeys(mail).build().perform();
             elComment.sendKeys(comment);
 //            String script = String.format("$('input[name=\"message\"]').click().val('%s')", comment);
 //            System.out.println(script);
