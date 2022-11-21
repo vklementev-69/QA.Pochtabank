@@ -89,7 +89,6 @@ public class FeedbackTest {
         }
         if (comment != null && comment.length() > 0) {
             wait.until(ExpectedConditions.visibilityOf(elComment));
-            act.moveToElement(elComment).sendKeys(mail).build().perform();
             elComment.sendKeys(comment);
 //            String script = String.format("$('input[name=\"message\"]').click().val('%s')", comment);
 //            System.out.println(script);
@@ -102,12 +101,12 @@ public class FeedbackTest {
                 Thread.sleep(100);
                 wait.until(ExpectedConditions.visibilityOf(elAgreement));
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
-                act.moveToElement(elAgreement).click().build().perform();
+ //               act.moveToElement(elAgreement).click().build().perform();
                 elAgreement.click();
 //                String script = "$('span.style_checkmark___GZe2').click()";
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
-                elAgreement = chrome.findElement(By.cssSelector("span.style_checkmark___GZe2"));
+                elAgreement = chrome.findElement(By.cssSelector("input[name='accept']"));
                 System.out.println("check agreement - "  + elAgreement.isSelected());
             }
             Thread.sleep(100);
@@ -134,7 +133,7 @@ public class FeedbackTest {
             elFio = chrome.findElement(By.name("fio"));
             elPhone = chrome.findElement(By.xpath("//input[@name='phone']")); //(By.name("phone"));
             elMail = chrome.findElement(By.name("email"));
-            elAgreement = chrome.findElement(By.cssSelector("span.style_checkmark___GZe2"));//(By.name("accept"));
+            elAgreement = chrome.findElement(By.name("accept"));//By.cssSelector("span.style_checkmark___GZe2"));
             elComment = chrome.findElement(By.name("message"));
             submitBtn = chrome.findElement(By.cssSelector("form.style_form__8TDpF button[type='submit']"));
         } catch (InterruptedException e) {
