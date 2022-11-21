@@ -79,8 +79,6 @@ public class FeedbackTest {
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            } catch (ElementClickInterceptedException ie) {
-                System.out.println(ie.getLocalizedMessage());
             }
         }
         if (mail != null && mail.length() > 0) {
@@ -121,8 +119,6 @@ public class FeedbackTest {
             System.out.println("click submit");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        } catch (ElementClickInterceptedException ie) {
-            System.out.println(ie.getLocalizedMessage());
         }
     }
 
