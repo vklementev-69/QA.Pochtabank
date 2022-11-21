@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import javax.swing.text.MaskFormatter;
+import java.text.ParseException;
 import java.time.Duration;
 import java.util.List;
 
@@ -76,11 +78,14 @@ public class FeedbackTest {
 //                elPhone.clear();
 //                act.moveToElement(elMail).sendKeys(phone).build().perform();
 //                elPhone.sendKeys(phone);
-                String script = String.format("$('input[name=\"phone\"]').click().val('%s').blur()", phone);
+                MaskFormatter mask = new MaskFormatter("+7 (###) ###-##-##");
+                String script = String.format("$('input[name=\"phone\"]').click().val('%s').blur()",mask.valueToString(phone));
                 System.out.println(script);
                 ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -111,13 +116,13 @@ public class FeedbackTest {
                 System.out.println("check agreement - "  + elAccept.isSelected());
             }
             Thread.sleep(100);
-//           wait.until(ExpectedConditions.visibilityOf(submitBtn));
-//            wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
-//            act.moveToElement(submitBtn).click().build().perform();
-//            submitBtn.click();
-            String script = "$('form.style_form__8TDpF button[type=\"submit\"]').click()";
-            System.out.println(script);
-            ((JavascriptExecutor) chrome).executeScript(script);
+           wait.until(ExpectedConditions.visibilityOf(submitBtn));
+            wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
+            act.moveToElement(submitBtn).click().build().perform();
+            submitBtn.click();
+//            String script = "$('form.style_form__8TDpF button[type=\"submit\"]').click()";
+//            System.out.println(script);
+//            ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("click submit");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
