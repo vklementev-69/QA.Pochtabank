@@ -28,7 +28,7 @@ public class FeedbackTest {
     @DataProvider(name = "sms")
     public static Object[][] dbData() {
         return new Object[][]{
-                {"Клементьев Вадим Владимирович", "9775676767", "testcase@mail.ru", "Хьюстон, у вас проблемы", true, "с заполнением всех полей валидными данными"},
+                {"Клементьев Вадим Владимирович", "+7 (977) 567-67-67", "testcase@mail.ru", "Хьюстон, у вас проблемы", true, "с заполнением всех полей валидными данными"},
                 {"Клементьев Вадим Владимирович", "9775676767", "testcase@mail.ru", null, true, "с заполнением только обязательных полей валидными данными"},
                 {"Клементьев Вадим Владимирович", "9775676767", "testcase@mail.ru", null, false, "Проверка обязательности поля \"Даю согласие на обработку  персональных данных\""},
                 {null, null, null, null, true, "Отправка \"Формы обратной связи\" с пустыми полями"},
@@ -76,8 +76,7 @@ public class FeedbackTest {
             try {
 //                wait.until(ExpectedConditions.visibilityOf(elPhone));
                 wait.until(ExpectedConditions.elementToBeClickable(elPhone));
-                //act.moveToElement(elPhone).click().build().perform();
-                elPhone.click();
+                act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
                 elPhone.clear();
                 act.moveToElement(elMail).sendKeys(phone).build().perform();
