@@ -70,12 +70,15 @@ public class FeedbackTest {
         if (phone != null && phone.length() > 0) {
             try {
 //                wait.until(ExpectedConditions.visibilityOf(elPhone));
-                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
-                act.moveToElement(elPhone).click().build().perform();
+//                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
+//                act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
-                elPhone.clear();
-                act.moveToElement(elMail).sendKeys(phone).build().perform();
-                elPhone.sendKeys(phone);
+//                elPhone.clear();
+//                act.moveToElement(elMail).sendKeys(phone).build().perform();
+//                elPhone.sendKeys(phone);
+                String script = "$('input[name=\"phone\"]').click().val('+7 (977) 567-67-67').blur()";
+                System.out.println(script);
+                ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -98,14 +101,13 @@ public class FeedbackTest {
         }
         try {
             if (checkAgreement) {
-                Thread.sleep(100);
-                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
-                act.moveToElement(elAccept).click().build().perform();
-                elAgreement.click();
-//                String script = "$('span.style_checkmark___GZe2').click()";
-//                System.out.println(script);
-//                ((JavascriptExecutor) chrome).executeScript(script);
-                elAgreement = chrome.findElement(By.cssSelector(""));
+//                Thread.sleep(100);
+//                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
+//                act.moveToElement(elAgreement).click().build().perform();
+//                elAgreement.click();
+                String script = "$('input[name=\"accept\"]').click()";
+                System.out.println(script);
+                ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("check agreement - "  + elAccept.isSelected());
             }
             Thread.sleep(100);
