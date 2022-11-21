@@ -100,9 +100,10 @@ public class FeedbackTest {
         try {
             if (checkAgreement) {
                 Thread.sleep(100);
-//                wait.until(ExpectedConditions.visibilityOf(elAgreement));
+                wait.until(ExpectedConditions.visibilityOf(elAgreement));
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
                 act.moveToElement(elAgreement).click().build().perform();
+                elAgreement.click();
 //                String script = "$('span.style_checkmark___GZe2').click()";
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
@@ -110,9 +111,10 @@ public class FeedbackTest {
                 System.out.println("check agreement - "  + elAgreement.isSelected());
             }
             Thread.sleep(100);
-//            wait.until(ExpectedConditions.visibilityOf(submitBtn));
+           wait.until(ExpectedConditions.visibilityOf(submitBtn));
             wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
             act.moveToElement(submitBtn).click().build().perform();
+            submitBtn.click();
 //            String script = "$('form.style_form__8TDpF button[type=\"submit\"]').click()";
 //            System.out.println(script);
 //            ((JavascriptExecutor) chrome).executeScript(script);
