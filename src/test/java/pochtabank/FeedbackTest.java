@@ -99,7 +99,6 @@ public class FeedbackTest {
         try {
             if (checkAgreement) {
                 Thread.sleep(100);
-                wait.until(ExpectedConditions.visibilityOf(elAgreement));
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
                 act.moveToElement(elAgreement).click().build().perform();
  //               elAgreement.click();
