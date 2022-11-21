@@ -133,7 +133,7 @@ public class FeedbackTest {
             elFio = chrome.findElement(By.name("fio"));
             elPhone = chrome.findElement(By.xpath("//input[@name='phone']")); //(By.name("phone"));
             elMail = chrome.findElement(By.name("email"));
-            elAgreement = chrome.findElement(By.name("accept"));//By.cssSelector("span.style_checkmark___GZe2"));
+            elAgreement = chrome.findElement(By.cssSelector("span.style_checkmark___GZe2"));//(By.name("accept"));
             elComment = chrome.findElement(By.name("message"));
             submitBtn = chrome.findElement(By.cssSelector("form.style_form__8TDpF button[type='submit']"));
         } catch (InterruptedException e) {
