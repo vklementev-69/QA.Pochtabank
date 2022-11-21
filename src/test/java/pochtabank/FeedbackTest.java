@@ -79,6 +79,7 @@ public class FeedbackTest {
 //                act.moveToElement(elMail).sendKeys(phone).build().perform();
 //                elPhone.sendKeys(phone);
                 MaskFormatter mask = new MaskFormatter("+7 (###) ###-##-##");
+                mask.setValueContainsLiteralCharacters(false);
                 String script = String.format("$('input[name=\"phone\"]').click().val('%s').blur()",mask.valueToString(phone));
                 System.out.println(script);
                 ((JavascriptExecutor) chrome).executeScript(script);
