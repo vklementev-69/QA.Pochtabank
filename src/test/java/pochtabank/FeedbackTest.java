@@ -74,7 +74,7 @@ public class FeedbackTest {
                 act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
                 elPhone.clear();
-                //act.moveToElement(elMail).sendKeys(phone).build().perform();
+                act.moveToElement(elMail).sendKeys(phone).build().perform();
                 elPhone.sendKeys(phone);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
@@ -99,9 +99,9 @@ public class FeedbackTest {
         try {
             if (checkAgreement) {
                 Thread.sleep(100);
-                wait.until(ExpectedConditions.elementToBeClickable(elAccept));
+                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
                 act.moveToElement(elAccept).click().build().perform();
- //               elAgreement.click();
+                elAgreement.click();
 //                String script = "$('span.style_checkmark___GZe2').click()";
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
