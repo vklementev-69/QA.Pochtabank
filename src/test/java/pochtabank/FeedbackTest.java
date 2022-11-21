@@ -152,7 +152,7 @@ public class FeedbackTest {
             //String window = chrome.getWindowHandle();
             Thread.sleep(2000);
             elFio = chrome.findElement(By.name("fio"));
-            elPhone = chrome.findElement(By.name("phone"));
+            elPhone = chrome.findElement(By.xpath("//input[@name='phone']")); //(By.name("phone"));
             elMail = chrome.findElement(By.name("email"));
             elAgreement = chrome.findElement(By.cssSelector("span.style_checkmark___GZe2"));//(By.name("accept"));
             elComment = chrome.findElement(By.name("message"));
