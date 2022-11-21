@@ -85,8 +85,8 @@ public class FeedbackTest {
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
+            } catch (ParseException pe) {
+                System.out.println(pe.getMessage());
             }
         }
         if (mail != null && mail.length() > 0) {
