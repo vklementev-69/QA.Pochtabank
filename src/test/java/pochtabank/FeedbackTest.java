@@ -101,8 +101,8 @@ public class FeedbackTest {
                 Thread.sleep(100);
                 wait.until(ExpectedConditions.visibilityOf(elAgreement));
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
- //               act.moveToElement(elAgreement).click().build().perform();
-                elAgreement.click();
+                act.moveToElement(elAgreement).click().build().perform();
+ //               elAgreement.click();
 //                String script = "$('span.style_checkmark___GZe2').click()";
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
