@@ -79,12 +79,12 @@ public class FeedbackTest {
                 act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
                 act.moveToElement(elMail).sendKeys(phone).build().perform();
-                elPhone.sendKeys(phone);
+//                elPhone.sendKeys(phone);
 
-//                for (char num : phone.toCharArray()) {
-//                    Thread.sleep(50);
-//                    elPhone.sendKeys(Character.toString(num));
-//                }
+                for (char num : phone.toCharArray()) {
+                    Thread.sleep(50);
+                    elPhone.sendKeys(Character.toString(num));
+                }
 //                String script = String.format("$('input[name=\"phone\"]').focus().val('%s').blur()", phone);
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
