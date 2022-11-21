@@ -85,9 +85,9 @@ public class FeedbackTest {
                     Thread.sleep(50);
                     elPhone.sendKeys(Character.toString(num));
                 }
-//                String script = String.format("$('input[name=\"phone\"]').focus().val('%s').blur()", phone);
-//                System.out.println(script);
-//                ((JavascriptExecutor) chrome).executeScript(script);
+                String script = String.format("$('input[name=\"phone\"]').val('%s').blur()", phone);
+                System.out.println(script);
+                ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
