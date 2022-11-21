@@ -19,7 +19,7 @@ public class FeedbackTest {
     private static final String URL = "https://www.pochtabank.ru/feedback";
     WebDriver chrome;
 
-    WebElement elFio, elMail, elPhone, elAgreement, elComment;
+    WebElement elFio, elMail, elPhone, elAgreement, elAccept, elComment;
     WebElement submitBtn;
     WebDriverWait wait;
 
@@ -75,7 +75,7 @@ public class FeedbackTest {
                 Thread.sleep(100);
                 elPhone.clear();
                 act.moveToElement(elMail).sendKeys(phone).build().perform();
-                elPhone.sendKeys(phone);
+                //elPhone.sendKeys(phone);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -99,14 +99,14 @@ public class FeedbackTest {
         try {
             if (checkAgreement) {
                 Thread.sleep(100);
-                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
+                wait.until(ExpectedConditions.elementToBeClickable(elAccept));
                 act.moveToElement(elAgreement).click().build().perform();
  //               elAgreement.click();
 //                String script = "$('span.style_checkmark___GZe2').click()";
 //                System.out.println(script);
 //                ((JavascriptExecutor) chrome).executeScript(script);
-                elAgreement = chrome.findElement(By.cssSelector("input[name='accept']"));
-                System.out.println("check agreement - "  + elAgreement.isSelected());
+                elAgreement = chrome.findElement(By.cssSelector(""));
+                System.out.println("check agreement - "  + elAccept.isSelected());
             }
             Thread.sleep(100);
            wait.until(ExpectedConditions.visibilityOf(submitBtn));
@@ -133,6 +133,7 @@ public class FeedbackTest {
             elPhone = chrome.findElement(By.xpath("//input[@name='phone']")); //(By.name("phone"));
             elMail = chrome.findElement(By.name("email"));
             elAgreement = chrome.findElement(By.cssSelector("span.style_checkmark___GZe2"));//(By.name("accept"));
+            elAccept = chrome.findElement(By.cssSelector("input[name='accept']"));//(By.name("accept"));
             elComment = chrome.findElement(By.name("message"));
             submitBtn = chrome.findElement(By.cssSelector("form.style_form__8TDpF button[type='submit']"));
         } catch (InterruptedException e) {
