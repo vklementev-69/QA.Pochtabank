@@ -76,7 +76,7 @@ public class FeedbackTest {
 //                elPhone.clear();
 //                act.moveToElement(elMail).sendKeys(phone).build().perform();
 //                elPhone.sendKeys(phone);
-                String script = "$('input[name=\"phone\"]').click().val('+7 (977) 567-67-67').blur()";
+                String script = String.format("$('input[name=\"phone\"]').click().val('%s').blur()", phone);
                 System.out.println(script);
                 ((JavascriptExecutor) chrome).executeScript(script);
                 System.out.println("Phone - " + elPhone.getAttribute("value"));
@@ -111,13 +111,13 @@ public class FeedbackTest {
                 System.out.println("check agreement - "  + elAccept.isSelected());
             }
             Thread.sleep(100);
-           wait.until(ExpectedConditions.visibilityOf(submitBtn));
-            wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
-            act.moveToElement(submitBtn).click().build().perform();
-            submitBtn.click();
-//            String script = "$('form.style_form__8TDpF button[type=\"submit\"]').click()";
-//            System.out.println(script);
-//            ((JavascriptExecutor) chrome).executeScript(script);
+//           wait.until(ExpectedConditions.visibilityOf(submitBtn));
+//            wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
+//            act.moveToElement(submitBtn).click().build().perform();
+//            submitBtn.click();
+            String script = "$('form.style_form__8TDpF button[type=\"submit\"]').click()";
+            System.out.println(script);
+            ((JavascriptExecutor) chrome).executeScript(script);
             System.out.println("click submit");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
