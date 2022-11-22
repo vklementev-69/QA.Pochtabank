@@ -1,6 +1,5 @@
 package pochtabank;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -57,7 +56,7 @@ public class FeedbackTest {
 
     @Parameters({"sms"})
     @Test(dataProvider = "sms")
-    @Description(value = "Проверка работы \"Формы обратной связи\". {condition}")
+    @Step(value = "Проверка работы \"Формы обратной связи\". {condition}")
     public void testNoSms(String fio, String phone, String mail, String comment, Boolean checkAgreement, String condition) {
 
         System.out.println("Test " + (testIndex + 1) + " - " + condition);
