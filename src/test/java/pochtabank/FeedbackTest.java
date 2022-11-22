@@ -1,6 +1,7 @@
 package pochtabank;
 
 import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,7 +57,7 @@ public class FeedbackTest {
 
     @Parameters({"sms"})
     @Test(dataProvider = "sms")
-    @Step(value = "Проверка работы \"Формы обратной связи\". {condition}")
+    @Story(value = "Проверка работы \"Формы обратной связи\". ${condition}")
     public void testNoSms(String fio, String phone, String mail, String comment, Boolean checkAgreement, String condition) {
 
         System.out.println("Test " + (testIndex + 1) + " - " + condition);
