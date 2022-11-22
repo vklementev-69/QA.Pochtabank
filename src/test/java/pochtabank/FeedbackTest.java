@@ -2,7 +2,9 @@ package pochtabank;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -11,8 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import javax.swing.text.MaskFormatter;
-import java.text.ParseException;
 import java.time.Duration;
 import java.util.List;
 
@@ -70,25 +70,23 @@ public class FeedbackTest {
             System.out.println("FIO - " + elFio.getAttribute("value"));
         }
         if (phone != null && phone.length() > 0) {
+            wait.until(ExpectedConditions.visibilityOf(elPhone));
+            wait.until(ExpectedConditions.elementToBeClickable(elPhone));
+            act.moveToElement(elPhone).click().build().perform();
             try {
-//                wait.until(ExpectedConditions.visibilityOf(elPhone));
-//                wait.until(ExpectedConditions.elementToBeClickable(elPhone));
-//                act.moveToElement(elPhone).click().build().perform();
                 Thread.sleep(100);
-//                elPhone.clear();
-//                act.moveToElement(elMail).sendKeys(phone).build().perform();
-//                elPhone.sendKeys(phone);
-                MaskFormatter mask = new MaskFormatter("+7 (###) ###-##-##");
-                mask.setValueContainsLiteralCharacters(false);
-                String script = String.format("$('input[name=\"phone\"]').click().val('%s').blur()",mask.valueToString(phone));
-                System.out.println(script);
-                ((JavascriptExecutor) chrome).executeScript(script);
-                System.out.println("Phone - " + elPhone.getAttribute("value"));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            } catch (ParseException pe) {
-                System.out.println(pe.getMessage());
             }
+            elPhone.clear();
+            act.moveToElement(elMail).sendKeys(phone).build().perform();
+            elPhone.sendKeys(phone);
+//                MaskFormatter mask = new MaskFormatter("+7 (###) ###-##-##");
+//                mask.setValueContainsLiteralCharacters(false);
+//                String script = String.format("$('input[name=\"phone\"]').click().val('%s').blur()",mask.valueToString(phone));
+//                System.out.println(script);
+//                ((JavascriptExecutor) chrome).executeScript(script);
+            System.out.println("Phone - " + elPhone.getAttribute("value"));
         }
         if (mail != null && mail.length() > 0) {
             act.moveToElement(elMail).sendKeys(mail).build().perform();
@@ -107,17 +105,17 @@ public class FeedbackTest {
         }
         try {
             if (checkAgreement) {
-//                Thread.sleep(100);
-//                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
-//                act.moveToElement(elAgreement).click().build().perform();
-//                elAgreement.click();
-                String script = "$('input[name=\"accept\"]').click()";
-                System.out.println(script);
-                ((JavascriptExecutor) chrome).executeScript(script);
-                System.out.println("check agreement - "  + elAccept.isSelected());
+                Thread.sleep(100);
+                wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
+                act.moveToElement(elAgreement).click().build().perform();
+                elAgreement.click();
+//                String script = "$('input[name=\"accept\"]').click()";
+//                System.out.println(script);
+//                ((JavascriptExecutor) chrome).executeScript(script);
+                System.out.println("check agreement - " + elAccept.isSelected());
             }
             Thread.sleep(100);
-           wait.until(ExpectedConditions.visibilityOf(submitBtn));
+            wait.until(ExpectedConditions.visibilityOf(submitBtn));
             wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
             act.moveToElement(submitBtn).click().build().perform();
             submitBtn.click();
@@ -160,9 +158,9 @@ public class FeedbackTest {
                 wait.until(ExpectedConditions.jsReturnsValue("return document.querySelector('div.style_modalWrapper__UG622')"));
                 Assert.assertTrue(testIndex < 3, dbData()[testIndex][5].toString());
                 System.out.println("Test pass");
-            } else if(testIndex > 1){
+            } else if (testIndex > 1) {
                 checkErrors(errors);
-            }else{
+            } else {
                 System.out.println("Test fail");
             }
             Thread.sleep(2000);
