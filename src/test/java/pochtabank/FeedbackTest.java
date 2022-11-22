@@ -107,7 +107,7 @@ public class FeedbackTest {
             if (checkAgreement) {
                 Thread.sleep(100);
                 wait.until(ExpectedConditions.elementToBeClickable(elAgreement));
-                act.moveToElement(elAgreement).click().build().perform();
+//                act.moveToElement(elAgreement).click().build().perform();
                 elAgreement.click();
 //                String script = "$('input[name=\"accept\"]').click()";
 //                System.out.println(script);
